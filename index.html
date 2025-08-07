@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>شمارش معکوس تا تولد</title>
+  <style>
+    body {
+      direction: rtl;
+      font-family: Tahoma, sans-serif;
+      text-align: center;
+      background-color: #fff0f5;
+      color: #333;
+      padding-top: 100px;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 40px;
+    }
+    #countdown {
+      font-size: 2em;
+      margin-bottom: 60px;
+    }
+    .message {
+      font-size: 1.8em;
+      color: #d63384;
+    }
+  </style>
+</head>
+<body>
+  <h1>چند روز تا تولد مونده؟ 🎉</h1>
+  <div id="countdown">...</div>
+  <div class="message">تولدت مبارک آجی مهربونم 💖 دوستت دارم 😘</div>
+
+  <script>
+    function updateCountdown() {
+      const now = new Date();
+      const currentYear = now.getFullYear();
+
+      // تولد در ۱۱ دی (معادل 31 دسامبر)
+      let birthday = new Date(`${currentYear}-12-31T00:00:00`);
+
+      // اگر امروز بعد از ۱۱ دی باشه، برای سال بعد تنظیم کن
+      if (now > birthday) {
+        birthday = new Date(`${currentYear + 1}-12-31T00:00:00`);
+      }
+
+      const diffTime = birthday - now;
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+      document.getElementById("countdown").textContent =
+        `${diffDays} روز تا ۱۱ دی باقی مانده`;
+    }
+
+    updateCountdown();
+  </script>
+</body>
+</html>
